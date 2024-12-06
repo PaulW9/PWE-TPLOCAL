@@ -1,0 +1,81 @@
+﻿@model List<TPLOCAL1.Models.Reviews>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/resources/AvisList.css" />
+    <title>Liste des Avis</title>
+    <style>
+        table {
+            width: 25%;
+            
+        }
+
+        th, td {
+            padding: 8px 12px;
+            border: double 1px black;
+            text-align: left;
+        }
+
+        th {
+            background-color: white;
+        }
+
+        .highlight-oui {
+            background-color: green; 
+        }
+
+       
+        .highlight-non {
+            background-color: red; 
+        }
+    
+    </style>
+</head>
+    
+<body>
+    <header>
+        <img src = "~/resources/GroupeHN.png" class=" image" alt="GroupeHN"/>
+        <h1>Liste des Avis</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/Home">Accueil</a></li>
+            <li><a href="/Home/Index/Form">Remplir le formulaire</a></li>
+        </ul>
+    </nav>
+
+    <p>Liste</p>
+
+    @if (Model != null && Model.Any())
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Avis Donné</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var review in Model)
+                {
+                    <tr>
+                        <td>@review.Name</td>
+                        <td>@review.FirstName</td>
+                        <td class="@(review.AvisDonne == "Oui" ? "highlight-oui" : (review.AvisDonne == "Non" ? "highlight-non" : ""))">
+                            @review.AvisDonne
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Aucun avis disponible.</p>
+    }
+</body>
+</html>

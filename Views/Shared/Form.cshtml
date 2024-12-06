@@ -1,0 +1,187 @@
+﻿@model TPLOCAL1.Models.DataStored
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de saisie</title>
+    <link rel="stylesheet" href="~/resources/Form.css" />
+    <style>
+        table {
+            width: 40%;
+    
+           
+        }
+
+
+        th, td {
+            padding: 8px 12px;
+            border: double 1px black;
+            text-align: left;
+        }
+
+        th {
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="~/resources/GroupeHN.png" class=" image" alt="GroupeHN" />
+        <h1>Formulaire TP HN Avis</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/Home">Accueil</a></li>
+            <li><a href="/Home/AvisList">Liste d'avis</a></li>
+        </ul>
+    </nav>
+
+    <form method="post" asp-action="Validation"></form>
+
+    @using (Html.BeginForm("Validation", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <br /> 
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <p>Informations personnelles</p>
+       
+        <table>
+
+            <tr>
+                <th>
+                    <label for="Nom">Nom :</label>
+                </th>
+                <th>
+                    @Html.TextBoxFor(m => m.Name)
+                    @Html.ValidationMessageFor(m => m.Name)
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="Forename">Prénom :</label>
+                </th>
+                <th>
+                    @Html.TextBoxFor(m => m.Forename)
+                    @Html.ValidationMessageFor(m => m.Forename)
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="Gender">Sexe :</label>
+                </th>
+                <th>
+                    @Html.DropDownListFor(m => m.Gender, new SelectList(new[] { "Selectionner un sexe","Homme", "Femme", "Autre" }))
+                    @Html.ValidationMessageFor(m => m.Gender)
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="Address">Adresse :</label>
+                </th>
+                <th>
+                    @Html.TextBoxFor(m => m.Address)
+                    @Html.ValidationMessageFor(m => m.Address)
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="ZipCode">Code postal :</label>
+                </th>
+                <th>
+                    @Html.TextBoxFor(m => m.ZipCode)
+                    @Html.ValidationMessageFor(m => m.ZipCode)
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="City">Ville</label>
+                </th>
+                <th>
+                    @Html.TextBoxFor(m => m.City)
+                    @Html.ValidationMessageFor(m => m.City)
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="Email">Email :</label>
+                </th>
+                <th>
+                    @Html.TextBoxFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email)
+                </th>
+            </tr>
+
+        </table>
+
+        <p>Informations formation suivie</p>
+        
+        <table>
+            
+            <tr>
+                <th>
+                    <label for="TrainingStartDate">Date de début de la formation :</label>
+                </th>
+                <th>
+                    @Html.TextBoxFor(m => m.TrainingStartDate, "{0:yyyy-MM-dd}", new { type = "date" })
+                    @Html.ValidationMessageFor(m => m.TrainingStartDate)
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="TrainingType">Type de formation :</label>
+                </th>
+                <th>
+                    @Html.DropDownListFor(m => m.TrainingType, new SelectList(new[] { "Selectionner une formation", "Formation COBOL", "Formation Objet", "Formation Compétence Double" }))
+                    @Html.ValidationMessageFor(m => m.TrainingType)
+                </th>
+            </tr>
+
+        </table>
+
+        <p>Avis sur la formation</p>
+
+        <table>
+
+            <tr>
+                <th>
+                    <label for="TrainingReviewCOBOL">Formation COBOL :</label>
+                </th>
+                <th>
+                    @Html.TextAreaFor(m => m.TrainingReviewCOBOL)
+                    @Html.ValidationMessageFor(m => m.TrainingReviewCOBOL)
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="TrainingReviewCsharp">Formation C# :</label>
+                </th>
+                <th>
+                    @Html.TextAreaFor(m => m.TrainingReviewCsharp)
+                    @Html.ValidationMessageFor(m => m.TrainingReviewCsharp)
+                </th>
+            </tr>
+
+        </table>
+
+        <button type="submit">Valider</button>
+    }
+
+    @Html.ValidationSummary(true)
+</body>
+</html>

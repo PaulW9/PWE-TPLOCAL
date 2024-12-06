@@ -1,0 +1,166 @@
+﻿@model TPLOCAL1.Models.DataStored
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Validation des données</title>
+    <link rel="stylesheet" href="~/resources/Form.css" />
+    <style>
+        table {
+            width: 40%;
+    
+           
+        }
+
+
+        th, td {
+            padding: 8px 12px;
+            border: double 1px black;
+            text-align: left;
+        }
+
+        th {
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="~/resources/GroupeHN.png" class=" image" alt="GroupeHN" />
+        <h1>Page de Validation</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/Home">Accueil</a></li>
+            <li><a href="/Home/AvisList">Liste d'avis</a></li>
+        </ul>
+    </nav>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <p>Votre formulaire a bien été pris en compte</p>
+    <p>Informations personnelles</p>
+
+    <table>
+
+        <tr>
+            <th>
+                <label for="Nom">Nom :</label>
+            </th>
+            <th>
+                @Model.Name
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label for="Forename">Prénom :</label>
+            </th>
+            <th>
+                @Model.Forename
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label for="Gender">Sexe :</label>
+            </th>
+            <th>
+                @Model.Gender
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label for="Address">Adresse :</label>
+            </th>
+            <th>
+                @Model.Address
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label for="ZipCode">Code postal :</label>
+            </th>
+            <th>
+                @Model.ZipCode
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label for="City">Ville</label>
+            </th>
+            <th>
+                @Model.City
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label for="Email">Email :</label>
+            </th>
+            <th>
+                @Model.Email
+            </th>
+        </tr>
+
+    </table>
+
+    <p>Informations formation suivie</p>
+
+    <table>
+
+        <tr>
+            <th>
+                <label for="TrainingStartDate">Date de début de la formation :</label>
+            </th>
+            <th>
+                @Model.TrainingStartDate.ToString("dd/MM/yyyy")
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label for="TrainingType">Type de formation :</label>
+            </th>
+            <th>
+                @Model.TrainingType
+            </th>
+        </tr>
+
+    </table>
+
+    <p>Avis sur la formation</p>
+
+    <table>
+
+        <tr>
+            <th>
+                <label for="TrainingReviewCOBOL">Formation COBOL :</label>
+            </th>
+            <th>
+                @Model.TrainingReviewCOBOL
+            </th>
+        </tr>
+
+        <tr>
+            <th>
+                <label for="TrainingReviewCsharp">Formation C# :</label>
+            </th>
+            <th>
+                @Model.TrainingReviewCsharp
+            </th>
+        </tr>
+
+    </table>
+    
+</body>
+</html>
